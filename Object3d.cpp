@@ -589,6 +589,7 @@ void Object3d::Update()
 
 void Object3d::Draw()
 {
+
 	// nullptrチェック
 	assert(device);
 	assert(Object3d::cmdList);
