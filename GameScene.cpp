@@ -33,8 +33,13 @@ void GameScene::Initialize(DirectXCommon* dxCommon, Input* input)
 	// 背景スプライト生成
 	spriteBG = Sprite::Create(1, { 0.0f,0.0f });
 	// 3Dオブジェクト生成
-	object3d = Object3d::Create();
+	object3d = Object3d::Create("boll");
+	object3d->SetPosition({ -10,0,0 });
 	object3d->Update();
+
+	object3d_1 = Object3d::Create("boll");
+	object3d_1->SetPosition({ 5,0,0 });
+	object3d_1->Update();
 }
 
 void GameScene::Update()
@@ -82,6 +87,11 @@ void GameScene::Draw()
 	/// ここに背景スプライトの描画処理を追加できる
 	/// </summary>
 
+	debugText.Print("obj", 50, 110, 1.0);
+
+	/*debugText_->SetPos(50, 110);
+	debugText_->Printf("targetNum :%d", targetMax);*/
+
 	// スプライト描画後処理
 	Sprite::PostDraw();
 	// 深度バッファクリア
@@ -94,6 +104,7 @@ void GameScene::Draw()
 
 	// 3Dオブクジェクトの描画
 	object3d->Draw();
+	object3d_1->Draw();
 
 	/// <summary>
 	/// ここに3Dオブジェクトの描画処理を追加できる
@@ -101,6 +112,7 @@ void GameScene::Draw()
 
 	// 3Dオブジェクト描画後処理
 	Object3d::PostDraw();
+
 #pragma endregion
 
 #pragma region 前景スプライト描画
